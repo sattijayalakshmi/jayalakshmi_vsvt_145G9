@@ -26,23 +26,43 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudents() {
 		// Add your implementation here
-		return null;
+		return students;
 	}
 
 	@Override
 	public void setStudents(Student[] students) {
 		// Add your implementation here
+		for(int i=0;i<students.length;i++)
+		{
+			this.students[i]=students[i];
+			
+			
+		}
 	}
 
 	@Override
 	public Student getStudent(int index) {
 		// Add your implementation here
+		for(int i=0;i<students.length;i++)
+		{
+			if(i==index)
+			{
+				return students[i];
+			}
+		}
 		return null;
 	}
 
 	@Override
 	public void setStudent(Student student, int index) {
 		// Add your implementation here
+		for(int i=0;i<students.length;i++)
+		{
+			if(i==index)
+			{
+				students[i]=student;
+			}
+		}
 	}
 
 	@Override
@@ -93,11 +113,36 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void bubbleSort() {
 		// Add your implementation here
+		for(int i=0;i<students.length-1;i++)
+		{
+			for(int j=i+1;j<students.length;j++)
+			{
+				if(students[i].getId()==students[j].getId())
+				{
+					Student t=students[i];
+					students[i]=students[j];
+					students[j]=t;
+				}
+			}
+		}
 	}
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
+		Student s1[]=null;
+		boolean f=false;
+		for(int i=0;i<students.length;i++)
+		{
+			if(students[i].getBirthDate()==date)
+			{
+				s1[i]=new Student(students[i].getId(),students[i].getFullName(),students[i].getBirthDate(),students[i].getAvgMark());
+				f=true;
+			}						
+		}
+		if(f)
+		return s1;
+		else
 		return null;
 	}
 
